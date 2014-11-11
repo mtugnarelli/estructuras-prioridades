@@ -30,16 +30,58 @@ public class PruebaColaDePrioridades {
     }
     
     @Test
-    public void luegoDeDesacolarElUnicoElementoEstaVacia() {
+    public void luegoDeDesacolarElUnicoElementoEstaVacia() throws Exception {
         
         cola.acolar(1, 334);
         cola.desacolar();
         
         Assert.assertTrue(cola.estaVacia());
     }
+
+    @Test
+    public void luegoDeDesacolarTodosLosElementoEstaVacia() throws Exception {
+        
+        cola.acolar(1, 334);
+        cola.acolar(1, 332);
+        cola.acolar(1, 333);
+        cola.acolar(1, 335);
+        cola.acolar(1, 337);
+        cola.acolar(1, 338);
+        cola.acolar(1, 339);
+        cola.desacolar();
+        cola.desacolar();
+        cola.desacolar();
+        cola.desacolar();
+        cola.desacolar();
+        cola.desacolar();
+        cola.desacolar();
+        
+        Assert.assertTrue(cola.estaVacia());
+    }
     
     @Test
-    public void acolarUnUnicoElementoLuegoDesacolaElMismo() {
+    public void luegoDeAcolarDesacolarTodosLosElementoEstaVacia() throws Exception {
+        
+        cola.acolar(1, 334);
+        cola.desacolar();
+        cola.acolar(1, 332);
+        cola.acolar(1, 333);
+        cola.desacolar();
+        cola.desacolar();
+        cola.acolar(1, 335);
+        cola.acolar(1, 337);
+        cola.desacolar();
+        cola.desacolar();
+        cola.acolar(1, 338);
+        cola.desacolar();
+        cola.acolar(1, 339);
+        cola.desacolar();
+        
+        Assert.assertTrue(cola.estaVacia());
+    }    
+    
+    @Test
+    public void acolarUnUnicoElementoLuegoDesacolaElMismo() throws Exception {
         
         cola.acolar(1, 343);
         
@@ -49,7 +91,7 @@ public class PruebaColaDePrioridades {
     }
     
     @Test
-    public void acolaTresElementoConLaMismaPrioridadLosDesacolaPorOrdenDeLlegada() {
+    public void acolaTresElementoConLaMismaPrioridadLosDesacolaPorOrdenDeLlegada() throws Exception {
         
         cola.acolar(1, 923);
         cola.acolar(1, 99);
@@ -65,7 +107,7 @@ public class PruebaColaDePrioridades {
     }
     
     @Test
-    public void acolarTresElementosConPrioridadCrecienteDesacolaPorPrioridadDecreciente() {
+    public void acolarTresElementosConPrioridadCrecienteDesacolaPorPrioridadDecreciente() throws Exception {
         
         cola.acolar(1, 5874);
         cola.acolar(2, 2346);
@@ -81,7 +123,7 @@ public class PruebaColaDePrioridades {
     }
     
     @Test
-    public void acolarCuatroElementosConPrioridadIntercambiadaDesacolaPorPrioridadOrden() {
+    public void acolarCuatroElementosConPrioridadIntercambiadaDesacolaPorPrioridadOrden() throws Exception {
         
         cola.acolar(1, 58845);
         cola.acolar(2, 55);
@@ -100,13 +142,13 @@ public class PruebaColaDePrioridades {
     }
     
     @Test(expected = Throwable.class)
-    public void descolarConLaColaVaciaGeneraUnaExcepcion() {
+    public void descolarConLaColaVaciaGeneraUnaExcepcion() throws Exception {
         
         cola.desacolar();
     }
 
     @Test(expected = Throwable.class)
-    public void descolarConLaColaVaciaLuegoDeDesacolarTodosLosElementosGeneraUnaExcepcion() {
+    public void descolarConLaColaVaciaLuegoDeDesacolarTodosLosElementosGeneraUnaExcepcion() throws Exception {
         
         cola.acolar(2, 23);
         cola.acolar(11, 433);
